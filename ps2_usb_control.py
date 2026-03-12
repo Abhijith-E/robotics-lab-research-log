@@ -54,7 +54,7 @@ try:
 
         # Convert joystick values to speed
         forward = -ly * MAX_SPEED
-        strafe  = lx * MAX_SPEED
+        strafe  = -lx * MAX_SPEED   # FIXED: invert X axis
         rotate  = rx * MAX_SPEED
 
         # Mecanum drive calculation
