@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>11-Sunday Sprint Roadmap</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a1a;
+            color: #e8e8f0;
+            line-height: 1.7;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(108, 60, 255, 0.2);
+            color: #a78bfa;
+            border: 1px solid rgba(108, 60, 255, 0.4);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), transparent);
+            margin: 60px 0;
+        }
+
+        .sprint {
+            border-radius: 20px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .sprint-header {
+            padding: 28px 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .sprint-num {
+            min-width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .sprint-meta h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .sprint-meta .date {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .sprint-meta .tagline {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 6px;
+        }
+
+        .sprint-body {
+            padding: 0 32px 28px;
+        }
+
+        .sprint-body h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #c4b5fd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0 10px;
+        }
+
+        .sprint-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sprint-body ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 14px;
+            color: #94a3b8;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .sprint-body ul li::before {
+            content: '▸';
+            color: #a78bfa;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .linkedin-box {
+            background: rgba(10, 102, 194, 0.12);
+            border: 1px solid rgba(10, 102, 194, 0.3);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 20px;
+        }
+
+        .linkedin-box .li-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .linkedin-box .li-hook {
+            font-size: 15px;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        .linkedin-box .li-body {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .outcome-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .outcome-tag {
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .ot-skill {
+            background: rgba(167, 139, 250, 0.1);
+            color: #a78bfa;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .ot-output {
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .ot-repo {
+            background: rgba(251, 146, 60, 0.1);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        /* Sprint color themes */
+        .s1 {
+            background: linear-gradient(135deg, rgba(108, 60, 255, 0.12), rgba(15, 12, 30, 0.9));
+        }
+
+        .s1 .sprint-header {
+            background: linear-gradient(135deg, rgba(108, 60, 255, 0.2), rgba(108, 60, 255, 0.05));
+        }
+
+        .s1 .sprint-num {
+            background: rgba(108, 60, 255, 0.3);
+            color: #a78bfa;
+        }
+
+        .s2 {
+            background: linear-gradient(135deg, rgba(0, 207, 255, 0.08), rgba(15, 12, 30, 0.9));
+        }
+
+        .s2 .sprint-header {
+            background: linear-gradient(135deg, rgba(0, 207, 255, 0.15), rgba(0, 207, 255, 0.03));
+        }
+
+        .s2 .sprint-num {
+            background: rgba(0, 207, 255, 0.2);
+            color: #00cfff;
+        }
+
+        .s3 {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(15, 12, 30, 0.9));
+        }
+
+        .s3 .sprint-header {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.03));
+        }
+
+        .s3 .sprint-num {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .s4 {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(15, 12, 30, 0.9));
+        }
+
+        .s4 .sprint-header {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.03));
+        }
+
+        .s4 .sprint-num {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .s5 {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(15, 12, 30, 0.9));
+        }
+
+        .s5 .sprint-header {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.03));
+        }
+
+        .s5 .sprint-num {
+            background: rgba(236, 72, 153, 0.2);
+            color: #f472b6;
+        }
+
+        .s6 {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(15, 12, 30, 0.9));
+        }
+
+        .s6 .sprint-header {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.03));
+        }
+
+        .s6 .sprint-num {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .s7 {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(15, 12, 30, 0.9));
+        }
+
+        .s7 .sprint-header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.03));
+        }
+
+        .s7 .sprint-num {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+        }
+
+        .s8,
+        .s9,
+        .s10,
+        .s11 {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(15, 12, 30, 0.9));
+        }
+
+        .s8 .sprint-header,
+        .s9 .sprint-header,
+        .s10 .sprint-header,
+        .s11 .sprint-header {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0.03));
+        }
+
+        .s8 .sprint-num,
+        .s9 .sprint-num,
+        .s10 .sprint-num,
+        .s11 .sprint-num {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <div class="section-tag">The Full Blueprint</div>
+        <h2>11-Sunday Sprint Roadmap</h2>
+        <p>Each Sunday is a focused sprint. Projects cascade — each builds on the last, creating a portfolio where the
+            whole is greater than the sum of its parts.</p>
+
+        <!-- SPRINT 1 -->
+        <div class="sprint s1">
+            <div class="sprint-header">
+                <div class="sprint-num">01</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 March 8, 2026</div>
+                    <h3>ROS2 Lab Setup + Visual Intelligence Foundation</h3>
+                    <div class="tagline">Build the infrastructure everything else will run on.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Install ROS2 Humble + Nav2 + MoveIt2 on your laptop and RPi 5 boards (TonyPi + ArmPi FPV)</li>
+                    <li>Set up GitHub organization "my-robotics-lab" with three repos: tonypi-ai, armpi-ros, mecanum-nav
+                    </li>
+                    <li>Establish SSH + VNC remote control to both RPi 5 boards over WiFi</li>
+                    <li>Install YOLOv8 (Ultralytics) on RPi 5 — benchmark inference speed, log results</li>
+                    <li>Run first object detection demo: ArmPi FPV camera detecting 5 common objects in real-time</li>
+                    <li>3D print: Camera mount bracket for ArmPi FPV using Anycubic Kobra 2 Neo</li>
+                    <li>Document everything in a professional README.md with setup instructions</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>ROS2 Humble, Python 3.11, Docker, YOLOv8n (nano model for edge speed)</li>
+                    <li>FreeCAD for bracket design → STL → Kobra 2 Neo print (PLA, 0.2mm layer)</li>
+                    <li>GitHub Actions: basic CI pipeline (linting Python, checking ROS2 build)</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"I just turned my bedroom into a robot research lab. Here's what Day 1 looks
+                        like."</div>
+                    <div class="li-body">Post a photo collage: RPi 5 boards powered up, ROS2 terminal running, YOLOv8
+                        detecting objects live on ArmPi FPV camera. Short video clip of real-time detection. Include
+                        GitHub link. Use: #Robotics #ROS2 #ComputerVision #ArtificialIntelligence #EmbodiedAI — First
+                        post sets the narrative. Aim for "I'm building in public" energy.</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">ROS2 Setup</span>
+                    <span class="outcome-tag ot-skill">YOLOv8 Edge</span>
+                    <span class="outcome-tag ot-output">GitHub Repos Live</span>
+                    <span class="outcome-tag ot-repo">3D Printed Part</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 2 -->
+        <div class="sprint s2">
+            <div class="sprint-header">
+                <div class="sprint-num">02</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 March 15, 2026</div>
+                    <h3>LLM-Powered Robot Brain: GPT-4o Controlling TonyPi Humanoid</h3>
+                    <div class="tagline">Make a humanoid robot understand natural language and act on it.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Build a Python middleware layer: voice input → Whisper STT → GPT-4o → structured command →
+                        TonyPi action</li>
+                    <li>Create a command schema (JSON tool calls): wave, walk_forward, pick_up, point_at, dance,
+                        report_temperature</li>
+                    <li>Add context: GPT-4o receives live sensor data (temp/humidity, ultrasonic distance) as context in
+                        system prompt</li>
+                    <li>Demo: Ask TonyPi "How hot is the room?" — it reads sensor and responds verbally via TTS</li>
+                    <li>Demo 2: "Wave to me then tell me the distance to the wall" — executes both commands sequentially
+                    </li>
+                    <li>Add dot-matrix display output: robot shows emoji faces matching its "mood" based on conversation
+                    </li>
+                    <li>Log all conversations to SQLite for analysis. Create a simple dashboard.</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>OpenAI GPT-4o API, Whisper (openai-whisper), pyttsx3 TTS, Python asyncio</li>
+                    <li>LangChain Tool Calling framework for structured robot command dispatch</li>
+                    <li>SQLite + FastAPI simple dashboard to visualize conversation logs</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"I built a robot that listens, thinks with GPT-4o, and acts. Watch it answer
+                        questions by reading its own sensors."</div>
+                    <div class="li-body">Post a 60-second video demo. You speak → robot responds and moves. This is pure
+                        LinkedIn gold — humanoid + LLM is a top 5 trending topic in robotics. Include link to
+                        open-source code. Tag: #EmbodiedAI #LLM #HumanoidRobot #GPT4 #Robotics #MachineLearning</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">LLM Tool Calling</span>
+                    <span class="outcome-tag ot-skill">STT/TTS Pipeline</span>
+                    <span class="outcome-tag ot-output">Live Demo Video</span>
+                    <span class="outcome-tag ot-repo">Open Source Repo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 3 -->
+        <div class="sprint s3">
+            <div class="sprint-header">
+                <div class="sprint-num">03</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 March 22, 2026</div>
+                    <h3>SLAM + Autonomous Navigation on ArmPi Pro Mecanum</h3>
+                    <div class="tagline">Give your custom-built mobile robot the ability to map and navigate a room.
+                    </div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Flash ROS2 on your ArmPi Pro (Mecanum + ArmPi FPV). Write URDF model for the combined robot.
+                    </li>
+                    <li>Implement Mecanum wheel odometry node using encoder feedback (12V motors). Tune wheel radius
+                        params.</li>
+                    <li>Deploy SLAM Toolbox (online async mode) — drive robot around room to build occupancy grid map
+                    </li>
+                    <li>Save the map, then run Nav2 with the saved map: set Nav2 goals from RViz and watch it navigate
+                        autonomously</li>
+                    <li>Achieve: robot reaches 5 waypoints autonomously without collision in your room</li>
+                    <li>Obstacle avoidance: ultrasonic sensor + costmap integration — robot stops before hitting objects
+                    </li>
+                    <li>3D print custom sensor mount: attach ultrasonic to front of mecanum chassis</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>ROS2 Nav2, SLAM Toolbox, RViz2, robot_localization (EKF), tf2 transforms</li>
+                    <li>Python encoder odometry node, Nav2 BehaviorTree XML for custom navigation behavior</li>
+                    <li>FreeCAD ultrasonic mount → STL → Printed on Kobra 2 Neo</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"I built my own mobile manipulation robot from parts, and it can now map and
+                        navigate a room by itself."</div>
+                    <div class="li-body">Post a screen-recording split video: left = RViz2 map building live, right =
+                        robot driving. Then Nav2 goal reached. This is a classic "wow" post. Show the custom 3D printed
+                        sensor mount. #ROS2 #SLAM #AutonomousRobots #Navigation #MobileRobotics</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">ROS2 Nav2</span>
+                    <span class="outcome-tag ot-skill">SLAM Toolbox</span>
+                    <span class="outcome-tag ot-skill">Encoder Odometry</span>
+                    <span class="outcome-tag ot-output">Autonomous Navigation Demo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 4 -->
+        <div class="sprint s4">
+            <div class="sprint-header">
+                <div class="sprint-num">04</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 March 29, 2026</div>
+                    <h3>Vision-Guided Pick-and-Place: ArmPi FPV Grasping with AI</h3>
+                    <div class="tagline">Teach the arm to see an object, plan a grasp, and pick it up — zero human
+                        intervention.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Implement YOLOv8 object detection pipeline on ArmPi FPV camera feed</li>
+                    <li>Compute 2D→3D object position using camera calibration (checkerboard) + inverse kinematics</li>
+                    <li>Write MoveIt2 motion planning node: given 3D object pose → plan arm trajectory → execute grasp
+                    </li>
+                    <li>Demo: Place colored blocks randomly — robot detects, plans, and picks up each block autonomously
+                    </li>
+                    <li>Add sorting: red block goes left, blue goes right — full visual pick-and-sort pipeline</li>
+                    <li>Compute success rate over 20 trials. Aim for >80% success. Log all trials.</li>
+                    <li>Write a technical blog post / report: "Vision-Guided Grasping on ArmPi FPV with YOLOv8 +
+                        MoveIt2"</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>YOLOv8, OpenCV camera calibration, ROS2 MoveIt2, Python IK solver</li>
+                    <li>Custom grasp quality metric: logging success/failure per trial to CSV</li>
+                    <li>Medium or GitHub Pages for blog post publication</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"Robot arm + AI vision = zero human intervention. Watch it sort objects by
+                        color, fully autonomously."</div>
+                    <div class="li-body">Post the sorting demo video. Share success rate metric (data = credibility).
+                        Link to the technical blog post. This post positions you as a serious researcher, not just a
+                        hobbyist. #Robotics #ComputerVision #Manipulation #YOLOv8 #MoveIt2 #ArtificialIntelligence</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">MoveIt2</span>
+                    <span class="outcome-tag ot-skill">Camera Calibration</span>
+                    <span class="outcome-tag ot-skill">Grasp Planning</span>
+                    <span class="outcome-tag ot-output">Technical Blog Post</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 5 -->
+        <div class="sprint s5">
+            <div class="sprint-header">
+                <div class="sprint-num">05</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 April 5, 2026</div>
+                    <h3>Multimodal Vision–Language Robot Control (VLA)</h3>
+                    <div class="tagline">The frontier of robotics: give your robot visual+language understanding for
+                        open-vocabulary task execution.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Integrate a VLM (GPT-4o Vision / Google Gemini 1.5 Flash) with the ArmPi FPV camera feed</li>
+                    <li>Pipeline: User instruction (text) + live camera frame → VLM reasoning → structured action
+                        command → robot executes</li>
+                    <li>Demo 1: "Pick up the red cube near the bottle" — robot identifies correct object visually,
+                        grasps it</li>
+                    <li>Demo 2: "Is the table clear? If not, move everything to the right side" — multi-step visual
+                        reasoning + action</li>
+                    <li>Implement chain-of-thought prompting: log VLM's reasoning steps and display them in a terminal
+                        dashboard</li>
+                    <li>Benchmark: latency (end-to-end), success rate, cost per interaction. Create a comparison table.
+                    </li>
+                    <li>This is a VLA (Vision-Language-Action) model demo — cutting edge as of 2026.</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>GPT-4o Vision API or Gemini 1.5 Flash (multimodal), LangChain agents, asyncio</li>
+                    <li>FastAPI server running on laptop → streams commands to RPi 5 robot via rosbridge / REST</li>
+                    <li>Rich terminal UI (Python Rich library) for real-time chain-of-thought display</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"I told my robot arm to 'pick up the red cube near the bottle' — and it did. No
+                        special commands. Just natural language + camera."</div>
+                    <div class="li-body">This is your biggest post yet. Post the demo video + chain-of-thought
+                        reasoning. Explain VLA simply. Compare with traditional robotics programming. Tag AI
+                        researchers. This can go viral. #VLA #MultimodalAI #EmbodiedAI #GPT4Vision #Robotics #AGI</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">VLM Integration</span>
+                    <span class="outcome-tag ot-skill">Chain-of-Thought</span>
+                    <span class="outcome-tag ot-output">VLA Demo Video</span>
+                    <span class="outcome-tag ot-repo">Benchmark Report</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 6 -->
+        <div class="sprint s6">
+            <div class="sprint-header">
+                <div class="sprint-num">06</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 April 12, 2026</div>
+                    <h3>Autonomous Mobile Manipulation: Navigate → Grasp → Deliver</h3>
+                    <div class="tagline">The holy grail of robotics: a robot that navigates to an object, picks it up,
+                        and delivers it somewhere else.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Combine Sprint 3 (navigation) + Sprint 4 (grasping) on your ArmPi Pro mobile manipulator</li>
+                    <li>Full pipeline: voice command → navigate to object location → detect object with YOLOv8 → grasp →
+                        navigate to drop-off → release</li>
+                    <li>Task: "Bring me the water bottle from the desk" — robot navigates, picks, delivers to you</li>
+                    <li>Implement semantic mapping: label locations ("desk", "charging station", "shelf") on the map
+                    </li>
+                    <li>Failure recovery: if grasp fails, retry twice before reporting failure verbally</li>
+                    <li>Build a simple web UI (Flask/FastAPI) to give tasks to the robot from a phone browser</li>
+                    <li>Run 10 delivery trials. Compute end-to-end success rate.</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>ROS2 Nav2 + MoveIt2 integration (full stack), semantic map YAML, BehaviorTree recovery nodes
+                    </li>
+                    <li>Flask web UI + WebSocket for live robot status. Hosted on RPi 5 itself (access via phone).</li>
+                    <li>Grafana + InfluxDB (or simple CSV) for trial metrics dashboard</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"'Bring me the water bottle.' — My robot heard me, drove across the room,
+                        picked it up, and delivered it. Full demo."</div>
+                    <div class="li-body">This is a landmark post. Very few students globally have done autonomous mobile
+                        manipulation. Post full-length demo (90 seconds). Explain the tech stack. This attracts robotics
+                        company recruiters directly. #MobileManipulation #Robotics #AutonomousSystems #ROS2
+                        #DeepLearning</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">Mobile Manipulation</span>
+                    <span class="outcome-tag ot-skill">Semantic Mapping</span>
+                    <span class="outcome-tag ot-output">Full System Demo</span>
+                    <span class="outcome-tag ot-output">Web Control UI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 7 -->
+        <div class="sprint s7">
+            <div class="sprint-header">
+                <div class="sprint-num">07</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 April 19, 2026</div>
+                    <h3>Reinforcement Learning for Robot Arm Control</h3>
+                    <div class="tagline">Train an RL agent in simulation, deploy on real hardware. Bridging the
+                        sim-to-real gap.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Create a Gymnasium environment for ArmPi FPV arm (7-DOF action/observation space)</li>
+                    <li>Train PPO agent (Stable-Baselines3) to reach target 3D positions — simulate in PyBullet or
+                        MuJoCo</li>
+                    <li>Implement domain randomization: vary target positions, friction, noise to help sim-to-real
+                        transfer</li>
+                    <li>Deploy trained policy on real ArmPi FPV arm — record success rate vs. simulation</li>
+                    <li>Compare RL policy vs. traditional IK: speed, accuracy, energy per move</li>
+                    <li>Create training curves, ablation study, evaluation plots — research-quality figures</li>
+                    <li>Write a 4-page mini-paper: "Sim-to-Real Transfer for Low-Cost Robot Arms"</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>Stable-Baselines3 (PPO/SAC), PyBullet simulation, Gymnasium custom env, TensorBoard</li>
+                    <li>URDF export of ArmPi for PyBullet, domain randomization wrappers</li>
+                    <li>LaTeX (overleaf) for mini-paper → upload to arXiv as preprint</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"I trained a robot arm in simulation and deployed it on real hardware the same
+                        day. The sim-to-real gap is real. Here's what happened."</div>
+                    <div class="li-body">Post training curves + side-by-side sim vs. real video. Upload mini-paper to
+                        arXiv. Having an arXiv preprint as a Masters student is extraordinary. Share the PDF link.
+                        #ReinforcementLearning #SimToReal #Robotics #MachineLearning #arXiv #Research</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">Deep RL (PPO/SAC)</span>
+                    <span class="outcome-tag ot-skill">Sim-to-Real</span>
+                    <span class="outcome-tag ot-output">arXiv Preprint</span>
+                    <span class="outcome-tag ot-repo">Open Source Gym Env</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 8 -->
+        <div class="sprint s8">
+            <div class="sprint-header">
+                <div class="sprint-num">08</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 April 26, 2026</div>
+                    <h3>IoT Sensor Network + Real-Time AI Analytics Dashboard</h3>
+                    <div class="tagline">Turn all your sensors into a smart environment monitoring system with AI
+                        anomaly detection.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Connect all sensors across robots: temp/humidity (TonyPi), light (TonyPi + ArmPi), ultrasonic,
+                        touch sensors</li>
+                    <li>Set up MQTT broker (Mosquitto on RPi): all sensors publish data every 500ms</li>
+                    <li>Build a real-time dashboard: Grafana + InfluxDB (or Node-RED + Chart.js web app)</li>
+                    <li>Deploy LSTM anomaly detection model (PyTorch): detects unusual temperature/humidity spikes</li>
+                    <li>Alert system: if anomaly detected → TonyPi announces alert verbally, dot matrix shows ⚠️</li>
+                    <li>Add fan automation: temperature >30°C → xArm activates fan module automatically</li>
+                    <li>Deploy entire system in Docker Compose on RPi 5. Full stack: MQTT + InfluxDB + Grafana + AI
+                        model</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>MQTT (Mosquitto), InfluxDB 2.0, Grafana Cloud, Docker Compose on RPi 5</li>
+                    <li>PyTorch LSTM for anomaly detection, scikit-learn for baseline comparison</li>
+                    <li>Node-RED for visual IoT flow programming (good for demo clarity)</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"My robot ecosystem is now a smart environment. Every sensor talks. AI watches
+                        for anomalies. The fan turns on automatically. Here's the architecture."</div>
+                    <div class="li-body">Post the full architecture diagram + Grafana dashboard screenshot + anomaly
+                        detection video clip. This shows Industrial IoT + AI skills — extremely valuable for
+                        manufacturing/Industry 4.0 companies. #IoT #SmartEnvironment #AnomalyDetection #LSTM #MQTT
+                        #Docker</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">MQTT / IoT</span>
+                    <span class="outcome-tag ot-skill">LSTM Anomaly Detection</span>
+                    <span class="outcome-tag ot-skill">Docker Compose</span>
+                    <span class="outcome-tag ot-output">Live Dashboard</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 9 -->
+        <div class="sprint s9">
+            <div class="sprint-header">
+                <div class="sprint-num">09</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 May 3, 2026</div>
+                    <h3>Human-Robot Interaction: Gesture + Emotion Recognition</h3>
+                    <div class="tagline">Make TonyPi humanoid respond to human body language — gestures, emotions, and
+                        gaze.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Implement MediaPipe Holistic: full body pose + hand gesture + face landmark detection on TonyPi
+                        camera</li>
+                    <li>Gesture vocabulary: wave → robot waves back, thumbs up → robot dances, stop gesture → robot
+                        freezes</li>
+                    <li>Emotion recognition: DeepFace on face frames → happy/sad/angry → TonyPi responds with matching
+                        expression on dot matrix + voice</li>
+                    <li>Gaze detection: if person looks at robot for >2 seconds → robot greets them by name (face
+                        recognition)</li>
+                    <li>Build a "Social Robot" demo: 5-minute autonomous interaction loop with a human</li>
+                    <li>Measure response latency end-to-end. Optimize to <500ms for gesture response.</li>
+                    <li>Deploy face recognition using FaceNet embeddings — save known faces in a database</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>MediaPipe Holistic, DeepFace, FaceNet (facenet-pytorch), OpenCV, asyncio pipeline</li>
+                    <li>SQLite for face embeddings, Python multiprocessing for parallel inference</li>
+                    <li>RPi 5's dual-camera support or USB webcam for higher resolution</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"My humanoid robot now reads body language. Wave at it → it waves back. Show
+                        sadness → it tries to cheer you up. The future of HRI."</div>
+                    <div class="li-body">Post a fun, human interaction video — this goes viral easily because it's
+                        emotional and relatable. Include the tech stack explanation. #HRI #HumanRobotInteraction
+                        #SocialRobotics #ComputerVision #MediaPipe #TonyPi</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">MediaPipe Holistic</span>
+                    <span class="outcome-tag ot-skill">Emotion Recognition</span>
+                    <span class="outcome-tag ot-skill">Face Recognition</span>
+                    <span class="outcome-tag ot-output">Social Robot Demo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 10 -->
+        <div class="sprint s10">
+            <div class="sprint-header">
+                <div class="sprint-num">10</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 May 10, 2026</div>
+                    <h3>3D Printed Custom Robot Gripper + Tactile Sensing</h3>
+                    <div class="tagline">Design, print, and deploy a custom smart gripper that can feel what it's
+                        holding.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Design a custom compliant gripper in FreeCAD — TPU flex fingers for soft grasping. Print on
+                        Kobra 2 Neo.</li>
+                    <li>Add FSR (Force Sensitive Resistor) sensors to gripper fingers — wire to Arduino Nano for analog
+                        read</li>
+                    <li>ROS2 node reads force data from Arduino (serial) and publishes to /gripper/force topic</li>
+                    <li>Implement grasp control: close until force threshold met → maintain grip → release on command
+                    </li>
+                    <li>Demo: robot grasps an egg (or paper cup) without crushing it — tactile-guided grasping</li>
+                    <li>Benchmark: 20 fragile object grasps. Compare force-controlled vs. position-controlled success
+                        rates.</li>
+                    <li>Document full design files on GitHub (FreeCAD source + STL + Arduino code + ROS2 node)</li>
+                </ul>
+                <h4>🛠️ Tools & Tech</h4>
+                <ul>
+                    <li>FreeCAD (gripper design), Anycubic Kobra 2 Neo (TPU filament), Arduino Nano, pyserial</li>
+                    <li>FSR402 force sensors (~₹200 each), ROS2 serial bridge, custom URDF for new gripper</li>
+                    <li>Matplotlib for force-vs-time plots, statistical comparison of both control methods</li>
+                </ul>
+                <div class="linkedin-box">
+                    <div class="li-label">🔵 LinkedIn Post Strategy</div>
+                    <div class="li-hook">"I designed and 3D printed a robot gripper with force sensing. It can hold an
+                        egg without breaking it. Here's how I built it from scratch."</div>
+                    <div class="li-body">Post FreeCAD design → printing timelapse → force sensor wiring → egg grasping
+                        demo. This shows hardware design skills on top of software — extremely rare combination. Link to
+                        full design files on GitHub. #3DPrinting #Robotics #TactileSensing #HardwareDesign #OpenSource
+                    </div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">Hardware Design (FreeCAD)</span>
+                    <span class="outcome-tag ot-skill">3D Printing (TPU)</span>
+                    <span class="outcome-tag ot-skill">Tactile Control</span>
+                    <span class="outcome-tag ot-output">Custom Hardware Asset</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPRINT 11 FINAL -->
+        <div class="sprint"
+            style="background:linear-gradient(135deg,rgba(108,60,255,0.15),rgba(0,207,255,0.08),rgba(15,12,30,0.95));border:2px solid rgba(167,139,250,0.4);">
+            <div class="sprint-header"
+                style="background:linear-gradient(135deg,rgba(108,60,255,0.25),rgba(0,207,255,0.1));">
+                <div class="sprint-num"
+                    style="background:linear-gradient(135deg,#6c3cff,#00cfff);color:#fff;font-size:20px;">🏆</div>
+                <div class="sprint-meta">
+                    <div class="date">📅 May 17–31, 2026 (Sprints 11–bonus)</div>
+                    <h3>CAPSTONE: "ARIA" — Autonomous Research Intelligence Assistant</h3>
+                    <div class="tagline" style="color:#a78bfa;">Your flagship project. A fully autonomous multi-robot AI
+                        system that can be your PhD-level portfolio centerpiece.</div>
+                </div>
+            </div>
+            <div class="sprint-body">
+                <h4>🎯 What ARIA Is</h4>
+                <ul>
+                    <li><strong>A: Autonomous</strong> — makes its own decisions, no human needed for task execution
+                    </li>
+                    <li><strong>R: Research</strong> — designed for lab automation: fetching items, monitoring sensors,
+                        reporting data</li>
+                    <li><strong>I: Intelligence</strong> — GPT-4o brain + vision + RL-trained manipulation + voice HRI
+                    </li>
+                    <li><strong>A: Assistant</strong> — a lab robot that helps you do your own research work</li>
+                </ul>
+                <h4>🎯 Core Objectives</h4>
+                <ul>
+                    <li>Integrate ALL previous sprints: Navigation + Grasping + VLA + Sensor IoT + Gesture HRI into one
+                        unified system</li>
+                    <li>ARIA can: navigate room → pick up items → deliver → monitor environment → respond to voice &
+                        gesture → report data</li>
+                    <li>Multi-robot coordination: TonyPi (assistant/greeter) + ArmPi Pro (mobile manipulator) work as a
+                        team</li>
+                    <li>Task: "Prepare lab for experiment" — ARIA navigates, clears bench, turns on fan if hot, greets
+                        researcher</li>
+                    <li>Build ARIA website: project page with demo videos, architecture diagrams, paper links, GitHub
+                    </li>
+                    <li>Write a comprehensive technical report (10-page): system architecture, results, limitations,
+                        future work</li>
+                    <li>Final LinkedIn mega-post: the career-defining announcement of your full system</li>
+                </ul>
+                <div class="linkedin-box" style="border-color:rgba(167,139,250,0.5);background:rgba(108,60,255,0.1);">
+                    <div class="li-label" style="color:#a78bfa;">🏆 Career-Defining LinkedIn Post</div>
+                    <div class="li-hook">"Over the last 3 months, I spent every Sunday building ARIA — a fully
+                        autonomous multi-robot AI assistant. Here's everything it can do."</div>
+                    <div class="li-body">Post a 3-minute cinematic demo video. Include: journey montage of all 11
+                        Sundays, technical highlights, GitHub link, website link, paper link. Write a thoughtful "future
+                        of robotics" reflection. This post should be your all-time best. Target: 100K+ impressions. Tag
+                        robotics companies: Boston Dynamics, Agility Robotics, Toyota Research Institute, DeepMind
+                        Robotics, OpenAI, Physically Intelligence. #ARIA #Robotics #EmbodiedAI #BuildingInPublic #Career
+                        #AI</div>
+                </div>
+                <div class="outcome-row">
+                    <span class="outcome-tag ot-skill">Full-Stack Robotics</span>
+                    <span class="outcome-tag ot-skill">Multi-Robot Systems</span>
+                    <span class="outcome-tag ot-output">ARIA Project Website</span>
+                    <span class="outcome-tag ot-output">Technical Report</span>
+                    <span class="outcome-tag ot-repo">arXiv Paper</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
