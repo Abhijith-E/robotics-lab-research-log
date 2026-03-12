@@ -4,10 +4,11 @@ from motor_driver import MotorDriver
 robot = MotorDriver()
 
 def move_right(speed=20, duration=2):
-    robot.set_motor_speed(1, -speed)
-    robot.set_motor_speed(2, speed)
-    robot.set_motor_speed(3, speed)
-    robot.set_motor_speed(4, -speed)
+    # Strafe RIGHT
+    robot.set_motor_speed(1, speed)
+    robot.set_motor_speed(2, -speed)
+    robot.set_motor_speed(3, -speed)
+    robot.set_motor_speed(4, speed)
 
     time.sleep(duration)
     stop()
