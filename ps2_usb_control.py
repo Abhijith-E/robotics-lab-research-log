@@ -40,28 +40,28 @@ try:
     while True:
         pygame.event.pump()
 
-        # Left Stick
-        lx = joystick.get_axis(0)   # Left/Right
-        ly = joystick.get_axis(1)   # Forward/Back
+        # LEFT STICK
+        lx = joystick.get_axis(0)   # left/right
+        ly = joystick.get_axis(1)   # forward/back
 
-        # Right Stick
-        rx = joystick.get_axis(2)   # Rotation
+        # RIGHT STICK
+        rx = joystick.get_axis(2)   # rotation
 
         # Apply deadzone
         lx = apply_deadzone(lx)
         ly = apply_deadzone(ly)
         rx = apply_deadzone(rx)
 
-        # FIXED DIRECTIONS
-        forward = ly * MAX_SPEED          # Removed negative
-        strafe  = -lx * MAX_SPEED         # Flipped X direction
+        # Convert joystick values to speed
+        forward = -ly * MAX_SPEED
+        strafe  = lx * MAX_SPEED
         rotate  = rx * MAX_SPEED
 
-        # Mecanum Drive Formula
-        m1 = forward + strafe + rotate
-        m2 = forward - strafe - rotate
-        m3 = forward - strafe + rotate
-        m4 = forward + strafe - rotate
+        # Mecanum drive calculation
+        m1 = -(forward + strafe + rotate)
+        m2 = -(forward - strafe - rotate)
+        m3 = -(forward - strafe + rotate)
+        m4 = -(forward + strafe - rotate)
 
         robot.set_motor_speed(1, clamp(m1))
         robot.set_motor_speed(2, clamp(m2))
