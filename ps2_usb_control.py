@@ -16,48 +16,105 @@ joystick.init()
 
 print("USB PS2 Controller Connected!")
 
-# ------------------------------
-# SETTINGS
-# ------------------------------
 MAX_SPEED = 50
 DEADZONE = 0.1
 
-# ------------------------------
+
 def stop():
-    for m in range(1, 5):
-        robot.set_motor_speed(m, 0)
+    for m in range(1,5):
+        robot.set_motor_speed(m,0)
+
 
 def clamp(val):
     return int(max(-MAX_SPEED, min(MAX_SPEED, val)))
 
-def apply_deadzone(value):
-    if abs(value) < DEADZONE:
-        return 0
-    return value
 
-# ------------------------------
+def apply_deadzone(v):
+    if abs(v) < DEADZONE:
+        return 0
+    return v
+
+
 try:
     while True:
+
         pygame.event.pump()
 
-        # LEFT STICK
-        lx = joystick.get_axis(0)   # left/right
-        ly = joystick.get_axis(1)   # forward/back
+        # ----------------------
+        # AXIS CONTROL (JOYSTICK)
+        # ----------------------
+        lx = apply_deadzone(joystick.get_axis(0))
+        ly = apply_deadzone(joystick.get_axis(1))
+        rx = apply_deadzone(joystick.get_axis(2))
 
-        # RIGHT STICK
-        rx = joystick.get_axis(2)   # rotation
-
-        # Apply deadzone
-        lx = apply_deadzone(lx)
-        ly = apply_deadzone(ly)
-        rx = apply_deadzone(rx)
-
-        # Convert joystick values to speed
         forward = -ly * MAX_SPEED
-        strafe  = -lx * MAX_SPEED   # FIXED: invert X axis
-        rotate  = rx * MAX_SPEED
+        strafe = -lx * MAX_SPEED
+        rotate = rx * MAX_SPEED
 
-        # Mecanum drive calculation
+        # ----------------------
+        # DPAD CONTROL
+        # ----------------------
+        hat = joystick.get_hat(0)
+
+        if hat[1] == 1:      # UP
+            forward = -MAX_SPEED
+        elif hat[1] == -1:   # DOWN
+            forward = MAX_SPEED
+
+        if hat[0] == 1:      # RIGHT
+            strafe = MAX_SPEED
+        elif hat[0] == -1:   # LEFT
+            strafe = -MAX_SPEED
+
+        # ----------------------
+        # BUTTON CONTROL
+        # ----------------------
+
+        A = joystick.get_button(0)
+        B = joystick.get_button(1)
+        X = joystick.get_button(2)
+        Y = joystick.get_button(3)
+        L1 = joystick.get_button(4)
+        R1 = joystick.get_button(5)
+        L2 = joystick.get_button(6)
+        R2 = joystick.get_button(7)
+
+        # STOP
+        if A:
+            stop()
+            continue
+
+        # ROTATE
+        if B:
+            rotate = MAX_SPEED
+        if X:
+            rotate = -MAX_SPEED
+
+        # TURBO FORWARD
+        if Y:
+            forward = -MAX_SPEED
+
+        # DIAGONALS
+        if L1:
+            forward = -MAX_SPEED
+            strafe = -MAX_SPEED
+
+        if R1:
+            forward = -MAX_SPEED
+            strafe = MAX_SPEED
+
+        if L2:
+            forward = MAX_SPEED
+            strafe = -MAX_SPEED
+
+        if R2:
+            forward = MAX_SPEED
+            strafe = MAX_SPEED
+
+        # ----------------------
+        # MECANUM CALCULATION
+        # ----------------------
+
         m1 = -(forward + strafe + rotate)
         m2 = -(forward - strafe - rotate)
         m3 = -(forward - strafe + rotate)
@@ -69,6 +126,7 @@ try:
         robot.set_motor_speed(4, clamp(m4))
 
         time.sleep(0.05)
+
 
 except KeyboardInterrupt:
     stop()
