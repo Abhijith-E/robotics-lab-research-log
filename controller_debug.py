@@ -8,34 +8,26 @@ if pygame.joystick.get_count() == 0:
     print("No controller detected")
     exit()
 
-joystick = pygame.joystick.Joystick(0)
-joystick.init()
+j = pygame.joystick.Joystick(0)
+j.init()
 
-print("Controller Name:", joystick.get_name())
-print("Axes:", joystick.get_numaxes())
-print("Buttons:", joystick.get_numbuttons())
-print("Hats:", joystick.get_numhats())
-print("Move sticks and press buttons to see values\n")
+print("Controller:", j.get_name())
+print("Axes:", j.get_numaxes())
+print("Buttons:", j.get_numbuttons())
+print("Hats:", j.get_numhats())
+print("---------------------")
 
 while True:
 
     pygame.event.pump()
 
-    # AXES
-    for i in range(joystick.get_numaxes()):
-        val = joystick.get_axis(i)
-        if abs(val) > 0.1:
-            print("Axis", i, "=", round(val, 2))
+    axes = [round(j.get_axis(i),2) for i in range(j.get_numaxes())]
+    buttons = [j.get_button(i) for i in range(j.get_numbuttons())]
+    hats = [j.get_hat(i) for i in range(j.get_numhats())]
 
-    # BUTTONS
-    for i in range(joystick.get_numbuttons()):
-        if joystick.get_button(i):
-            print("Button pressed:", i)
+    print("AXES :", axes)
+    print("BUTTONS :", buttons)
+    print("HATS :", hats)
+    print("---------------------")
 
-    # DPAD
-    for i in range(joystick.get_numhats()):
-        hat = joystick.get_hat(i)
-        if hat != (0,0):
-            print("DPad:", hat)
-
-    time.sleep(0.1)
+    time.sleep(0.5)
